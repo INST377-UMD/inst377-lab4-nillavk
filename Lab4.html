@@ -1,0 +1,78 @@
+<html>
+<head>
+    <title>INST377 - Lab 4</title>
+    <style>
+        body {
+            background-color: blue;
+        }
+        .section {
+            background-color: purple;
+            color: white;
+            border: 2px solid white;            
+            padding: 20px;
+            margin: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>INST377 - Lab 4</h1>
+
+    <div class="section">
+        <form id="alertForm" onsubmit="return false;">
+            <label for="name">Name: </label>
+            <input type="text" id="name" required>
+            <button type="button" onclick="alertName()">Alert Me!</button>
+        </form>
+    </div>
+
+    <div class="section">
+        <button onclick="changeColor()">Change Color</button>
+    </div>
+
+    <div class="section">
+        <form id="textTesterForm" onsubmit="return false;">
+            <label for="testText">Text Tester: </label>
+            <input type="text" id="testText" required>
+            <button type="button" onclick="validateText()">Validate Text</button>
+        </form>
+    </div>
+
+    <div class="section">
+        <button onclick="addText()">Add Text</button>
+    </div>
+
+    <script>
+        let isBlue = true;
+
+        function alertName() {
+            const name = document.getElementById('name').value.trim();
+            if (name) {
+                alert(`Hi ${name}!`);
+            } else {
+                alert("Please enter a name.");
+            }
+        }
+
+        function changeColor() {
+            document.body.style.backgroundColor = isBlue ? 'green' : 'blue';
+            isBlue = !isBlue;
+        }
+
+        function validateText() {
+            const text = document.getElementById('testText').value;
+            const validation = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
+            if (validation.test(text)) {
+                alert("The text contains special characters!");
+            } else {
+                alert("The text is valid.");
+            }
+        }
+
+        function addText() {
+            const heading = document.querySelector('h1');
+            heading.textContent += ' Add Text';
+        }
+    </script>
+</body>
+</html>
